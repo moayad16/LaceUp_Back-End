@@ -3,7 +3,6 @@ package com.laceUp.LaceUp.models;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
-import org.apache.commons.codec.digest.DigestUtils;
 
 
 @Document
@@ -40,7 +39,7 @@ public class User {
 
     public User(String email, String password, String type, String name, String phone_number, String address) {
         this.email = email;
-        this.password = DigestUtils.sha256Hex(password);;
+        this.password = password;
         this.type = type;
         this.name = name;
         this.phone_number = phone_number;

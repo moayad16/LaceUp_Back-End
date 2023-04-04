@@ -6,7 +6,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -27,17 +26,17 @@ public class productsEndpoints {
 
 
     @PostMapping(path = "/CreateProduct", consumes = "application/json", produces = "application/json")
-    public ResponseEntity createProduct(@RequestBody products product) {
+    public ResponseEntity<String> createProduct(@RequestBody products product) {
         // save the product in the database
         productRepository.save(product);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok("Product created successfully");
     }
 
     @DeleteMapping(path = "/DeleteProduct", produces = "application/json")
-    public ResponseEntity deleteProduct(@RequestParam String id) {
+    public ResponseEntity<String> deleteProduct(@RequestParam String id) {
         // delete the product from the database
         productRepository.deleteById(id);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok("Product deleted successfully");
     }
 
     @GetMapping(path = "/GetAllProducts", produces = "application/json")
