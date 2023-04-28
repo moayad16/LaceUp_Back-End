@@ -13,10 +13,10 @@ public class orders {
     private String id;
 
     @Field
-    private String user_Id;
+    private String userId;
 
     @Field
-    private Object[] products;
+    private customerProduct[] products;
 
     @Field
     private String status;
@@ -25,39 +25,78 @@ public class orders {
     private String date;
 
     @ Field
-    private String address;
-
+    private Addresses address;
+    
     @Field
-    private String phone_number;
-
-    @Field
-    private Integer total_price;
-
-    public orders(String user_Id, Object[] products, String status, String date, String address, String phone_number, Integer total_price) {
-        this.user_Id = user_Id;
+    private double total_price;
+    
+    
+    public orders(String userId, customerProduct[] products, String status, String date, Addresses address, double total_price) {
+        this.userId = userId;
         this.products = products;
         this.status = status;
         this.date = date;
         this.address = address;
-        this.phone_number = phone_number;
         this.total_price = total_price;
     }
 
-    public String getUser_Id() {
-        return user_Id;
+    
+    public String getId() {
+        return id;
     }
 
-    public void setUser_Id(String user_Id) {
-        this.user_Id = user_Id;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public Object[] getProducts() {
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public customerProduct[] getProducts() {
         return products;
     }
 
-    public void setProducts(String[] products) {
+    public void setProducts(customerProduct[] products) {
         this.products = products;
     }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public Addresses getAddress() {
+        return address;
+    }
+
+    public void setAddress(Addresses address) {
+        this.address = address;
+    }
+
+    public double getTotal_price() {
+        return total_price;
+    }
+
+    public void setTotal_price(double total_price) {
+        this.total_price = total_price;
+    }
+    
 
     
     

@@ -4,12 +4,17 @@ import org.springframework.stereotype.Repository;
 
 import com.laceUp.LaceUp.models.Addresses;
 
-import org.springframework.boot.autoconfigure.amqp.RabbitConnectionDetails.Address;
+import java.util.List;
+
 import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.Query;
+
 
 @Repository
-public interface AddressesRepository extends MongoRepository<Address, String> {
+public interface AddressesRepository extends MongoRepository<Addresses, String> {
 
-    void save(Addresses address);
+    @Query(value = "{'userId': ?0}", fields = "{'_id': 1, 'adress': 1, 'city': 1, 'phoneNumber': 1, 'region': 1}")
+    List<Addresses> findAllByUserId(String userId);
+
 
 }

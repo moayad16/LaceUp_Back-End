@@ -46,6 +46,7 @@ public class productsEndpoints {
     @GetMapping(path = "/GetAllProducts", produces = "application/json")
     public List<products> getAllProducts() {
 
+
         return productRepository.findAll();
     }
 

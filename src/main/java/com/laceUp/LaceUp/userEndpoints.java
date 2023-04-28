@@ -2,8 +2,11 @@ package com.laceUp.LaceUp;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -48,8 +51,8 @@ public class userEndpoints {
         return ResponseEntity.ok("User created successfully");
     }
 
-    @PostMapping(path = "/validateToken", consumes = "application/x-www-form-urlencoded", produces = "application/json")
-    public ResponseEntity<Boolean> validateToken(@RequestBody String token) {
+    @PostMapping(path = "/validateToken", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<Boolean> validateToken(@RequestHeader("Authorization") String token) {
         Map<String, Object> response = jwtHandler.validateToken(token);
 
         if ((boolean) response.get("isValid")) {
@@ -91,6 +94,13 @@ public class userEndpoints {
 
         return ResponseEntity.ok(response);
 
+    }
+
+    @GetMapping(path = "/GetUser", produces = "application/json")
+    public User getUser(@RequestParam String userId) {
+        User user = userRepository.findById(userId).get();
+        user.setPassword("********");
+        return user;
     }
 
 
