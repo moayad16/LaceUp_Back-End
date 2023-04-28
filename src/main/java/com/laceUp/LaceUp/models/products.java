@@ -4,45 +4,60 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+
 @Document
 public class products {
     @Id
-    private String id;
-
+    private String _id;
+    
     @Field
     private String name;
-
+    
     @Field
     private String description;
-
+    
     @Field
     private String gender;
-
+    
     @Field
-    private Integer price;
-
+    private double price;
+    
     @Field
     private String image;
-
-    @Field
-    private Integer quantity;
-
+    
     @Field
     private Integer[] sizes;
-
-    public products(String name, String description, String gender, Integer price, String image, Integer quantity,
-            Integer[] sizes) {
+    
+    @Field
+    private String brand;
+    
+    
+    public products(String name, String description, String gender, double price, String image,
+    Integer[] sizes, String brand) {
         this.name = name;
         this.description = description;
         this.gender = gender;
         this.price = price;
         this.image = image;
-        this.quantity = quantity;
+        this.brand = brand;
         this.sizes = sizes;
-
-        
     }
 
+    public String getId() {
+        return _id;
+    }
+
+    public void setId(String id) {
+        this._id = id;
+    }
+    
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
     public String getName() {
         return name;
     }
@@ -67,7 +82,7 @@ public class products {
         this.gender = gender;
     }
 
-    public Integer getPrice() {
+    public double getPrice() {
         return price;
     }
 
@@ -81,14 +96,6 @@ public class products {
 
     public void setImage(String image) {
         this.image = image;
-    }
-
-    public Integer getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
     }
 
     public Integer[] getSizes() {

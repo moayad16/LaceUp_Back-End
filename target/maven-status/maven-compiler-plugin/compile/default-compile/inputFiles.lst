@@ -1,10 +1,14 @@
-/Users/moayademad/systems_software/Project/backend/src/main/java/com/laceUp/LaceUp/ordersEndpoints.java
 /Users/moayademad/systems_software/Project/backend/src/main/java/com/laceUp/LaceUp/repositories/ProductRepository.java
+/Users/moayademad/systems_software/Project/backend/src/main/java/com/laceUp/LaceUp/models/Addresses.java
 /Users/moayademad/systems_software/Project/backend/src/main/java/com/laceUp/LaceUp/models/products.java
 /Users/moayademad/systems_software/Project/backend/src/main/java/com/laceUp/LaceUp/productsEndpoints.java
 /Users/moayademad/systems_software/Project/backend/src/main/java/com/laceUp/LaceUp/LaceUpApplication.java
 /Users/moayademad/systems_software/Project/backend/src/main/java/com/laceUp/LaceUp/models/orders.java
 /Users/moayademad/systems_software/Project/backend/src/main/java/com/laceUp/LaceUp/repositories/UserRepository.java
+/Users/moayademad/systems_software/Project/backend/src/main/java/com/laceUp/LaceUp/addressesEndpoints.java
+/Users/moayademad/systems_software/Project/backend/src/main/java/com/laceUp/LaceUp/utils/jwtHandler.java
+/Users/moayademad/systems_software/Project/backend/src/main/java/com/laceUp/LaceUp/repositories/AddressesRepository.java
 /Users/moayademad/systems_software/Project/backend/src/main/java/com/laceUp/LaceUp/userEndpoints.java
-/Users/moayademad/systems_software/Project/backend/src/main/java/com/laceUp/LaceUp/repositories/OrderRepository.java
 /Users/moayademad/systems_software/Project/backend/src/main/java/com/laceUp/LaceUp/models/User.java
+/Users/moayademad/systems_software/Project/backend/src/main/java/com/laceUp/LaceUp/ordersEndpoints.java
+/Users/moayademad/systems_software/Project/backend/src/main/java/com/laceUp/LaceUp/repositories/OrderRepository.java

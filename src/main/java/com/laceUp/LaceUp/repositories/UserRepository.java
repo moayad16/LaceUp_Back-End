@@ -8,7 +8,7 @@ import com.laceUp.LaceUp.models.User;
 
 @Repository
 public interface UserRepository extends MongoRepository<User, String> {
-    @Query("{ 'email' : ?0 }")
+    @Query(value = "{ 'email' : ?0 }", fields="{ '_id': 1, 'email': 1, 'password': 1, 'type': 1, 'name': 1 }")
     User findOneByEmail(String email);
 
 }

@@ -23,11 +23,6 @@ public class User {
     @Field
     private String name;
 
-    @Field
-    private String phone_number;
-
-    @Field
-    private String address;
 
     public String getType() {
         return type;
@@ -37,13 +32,11 @@ public class User {
         this.type = type;
     }
 
-    public User(String email, String password, String type, String name, String phone_number, String address) {
+    public User(String email, String password, String type, String name) {
         this.email = email;
         this.password = password;
         this.type = type;
         this.name = name;
-        this.phone_number = phone_number;
-        this.address = address;
     }
 
     public String getId() {
@@ -68,6 +61,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
      @Override

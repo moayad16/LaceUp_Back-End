@@ -5,12 +5,18 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import org.apache.commons.codec.digest.DigestUtils;
 
 import com.laceUp.LaceUp.models.User;
 import com.laceUp.LaceUp.repositories.UserRepository;
+import com.laceUp.LaceUp.utils.jwtHandler;
 
 
 @RestController
@@ -20,9 +26,11 @@ public class userEndpoints {
 
     private final UserRepository userRepository;
 
+    @Autowired
     public userEndpoints(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
+
     
     @PostMapping(path = "/signup", consumes = "application/json", produces = "application/json")
     public ResponseEntity<String> createUser(@RequestBody User user) {
@@ -40,8 +48,18 @@ public class userEndpoints {
         return ResponseEntity.ok("User created successfully");
     }
 
+    @PostMapping(path = "/validateToken", consumes = "application/x-www-form-urlencoded", produces = "application/json")
+    public ResponseEntity<Boolean> validateToken(@RequestBody String token) {
+        Map<String, Object> response = jwtHandler.validateToken(token);
+
+        if ((boolean) response.get("isValid")) {
+            return ResponseEntity.ok(true);
+        }
+        return ResponseEntity.ok(false);
+    }
+
     @PostMapping(path = "/login", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<User> login(@RequestBody User user) {
+    public ResponseEntity<Map<String, Object>>login(@RequestBody User user) {
         //retrieve user from database
         User userFromDB = userRepository.findOneByEmail(user.getEmail());
         
@@ -60,7 +78,18 @@ public class userEndpoints {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
         }
 
-        return ResponseEntity.ok(userFromDB);    
+        // generate a jwt token
+        String token = jwtHandler.generateToken(user.getEmail(), user.getId(), user.getType());
+
+        // System.out.println(userFromDB.getEmail() + " " + userFromDB.getId() + " " + userFromDB.getType() + " " + userFromDB.getPassword());
+
+        Map<String, Object> response = new HashMap<>();
+        response.put("token", token);
+        response.put("name", userFromDB.getName());
+        response.put("id", userFromDB.getId());
+        response.put("type", userFromDB.getType());
+
+        return ResponseEntity.ok(response);
 
     }
 

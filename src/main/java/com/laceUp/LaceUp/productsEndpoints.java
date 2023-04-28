@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +17,7 @@ import com.laceUp.LaceUp.repositories.ProductRepository;
 
 @RestController
 @Service
+@CrossOrigin(origins = "http://localhost:3000")
 public class productsEndpoints {
 
     private final ProductRepository productRepository;
@@ -26,9 +28,11 @@ public class productsEndpoints {
 
 
     @PostMapping(path = "/CreateProduct", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<String> createProduct(@RequestBody products product) {
+    public ResponseEntity<String> createProduct(@RequestBody List<products> product) {
         // save the product in the database
-        productRepository.save(product);
+        for (products p : product) {
+            productRepository.save(p);
+        }
         return ResponseEntity.ok("Product created successfully");
     }
 
@@ -41,6 +45,7 @@ public class productsEndpoints {
 
     @GetMapping(path = "/GetAllProducts", produces = "application/json")
     public List<products> getAllProducts() {
+
         return productRepository.findAll();
     }
 

@@ -1,7 +1,11 @@
-com/laceUp/LaceUp/ordersEndpoints.class
-com/laceUp/LaceUp/repositories/OrderRepository.class
+com/laceUp/LaceUp/productsEndpoints.class
+com/laceUp/LaceUp/repositories/ProductRepository.class
+com/laceUp/LaceUp/utils/jwtHandler.class
 com/laceUp/LaceUp/repositories/UserRepository.class
-com/laceUp/LaceUp/models/orders.class
 com/laceUp/LaceUp/models/User.class
 com/laceUp/LaceUp/LaceUpApplication.class
 com/laceUp/LaceUp/userEndpoints.class
+com/laceUp/LaceUp/ordersEndpoints.class
+com/laceUp/LaceUp/models/products.class
+com/laceUp/LaceUp/repositories/OrderRepository.class
+com/laceUp/LaceUp/models/orders.class

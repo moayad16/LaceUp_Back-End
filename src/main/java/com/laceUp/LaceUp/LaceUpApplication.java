@@ -27,7 +27,7 @@ public class LaceUpApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 
 		if(userRepository.findAll().isEmpty()) {
-			userRepository.save(new User("admin", "admin", "admin", "", "", "")); 
+			userRepository.save(new User("admin", "admin", "admin", "admin")); 
 		}
 		
 	}
