@@ -52,4 +52,17 @@ public class ordersEndpoints {
     public orders getOrderById(@RequestBody String id) {
         return orderRepository.findById(id).get();
     }
+
+    @GetMapping(path = "/GetAllOrders", produces = "application/json")
+    public Iterable<orders> getAllOrders(@RequestHeader("Authorization") String token) {
+
+        Map<String, Object> response = jwtHandler.validateToken(token);
+
+        if (!(boolean) response.get("isValid")) {
+            return null;
+        }
+        
+        return orderRepository.findAll();
+    }
+
 }

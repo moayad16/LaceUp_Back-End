@@ -35,7 +35,7 @@ public class User {
     public User(String email, String password, String type, String name) {
         this.email = email;
         this.password = password;
-        this.type = type;
+        this.type = (type != null)? type : "customer" ;
         this.name = name;
     }
 
