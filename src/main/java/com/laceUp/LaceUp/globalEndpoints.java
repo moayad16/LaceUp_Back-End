@@ -17,7 +17,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.codec.digest.DigestUtils;
 
 import com.laceUp.LaceUp.models.User;
 import com.laceUp.LaceUp.models.orders;
