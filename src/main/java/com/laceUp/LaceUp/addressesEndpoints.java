@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import com.laceUp.LaceUp.models.Addresses;
 import com.laceUp.LaceUp.repositories.AddressesRepository;
 import com.laceUp.LaceUp.utils.jwtHandler;

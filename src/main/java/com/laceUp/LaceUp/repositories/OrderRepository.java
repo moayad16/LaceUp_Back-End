@@ -3,7 +3,6 @@ package com.laceUp.LaceUp.repositories;
 import java.util.List;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.laceUp.LaceUp.models.orders;
