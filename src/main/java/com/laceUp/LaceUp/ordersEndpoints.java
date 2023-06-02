@@ -48,10 +48,6 @@ public class ordersEndpoints {
         return ResponseEntity.status(401).body(null);
     }
 
-    @GetMapping(path = "/GetOrderById", produces = "application/json")
-    public orders getOrderById(@RequestBody String id) {
-        return orderRepository.findById(id).get();
-    }
 
     @GetMapping(path = "/GetAllOrders", produces = "application/json")
     public Iterable<orders> getAllOrders(@RequestHeader("Authorization") String token) {
